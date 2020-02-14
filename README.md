@@ -42,7 +42,7 @@ import EmailChipInput from '@arelstone/react-native-email-chip';
 
 
 ## Contributing
-If you find a feature missing or discovers a but pull requests are very very welcome.
+If you find a feature missing or discovers an issue pull requests are very very welcome.
 
 
 
