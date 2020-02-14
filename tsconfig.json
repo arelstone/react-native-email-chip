@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "isolatedModules": false,
+        "jsx": "react-native",
+        "lib": [
+            "es6",
+            "ESNext"
+        ],
+        "moduleResolution": "node",
+        "noEmit": true,
+        "strict": true,
+        "target": "ESNext",
+        "resolveJsonModule": true,
+        "strictNullChecks": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "importHelpers": false,
+        "alwaysStrict": true,
+        "forceConsistentCasingInFileNames": true,
+        "strictFunctionTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictPropertyInitialization": false,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./@types"
+        ],
+        "declaration": true,
+        "outDir": "./lib",
+    },
+    "exclude": [
+        "node_modules",
+        "src/__tests__"
+    ],
+    "include": [
+        "src",
+        "./types.d.ts"
+    ],
+}

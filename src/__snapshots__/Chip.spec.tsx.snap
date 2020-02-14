@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Chip /> should match snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`<Chip /> without chipImage and extra styling should match snapshot 1`] = `ShallowWrapper {}`;
