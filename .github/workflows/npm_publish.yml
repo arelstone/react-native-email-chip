@@ -16,6 +16,7 @@ jobs:
       - run: npm test -- --ci
 
   tag:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -28,7 +29,7 @@ jobs:
           WITH_V: false
 
   publish-npm:
-    needs: build
+    needs: tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
