@@ -1,4 +1,4 @@
-name: Bump version
+name: npm-publish
 on:
   push:
     branches:
