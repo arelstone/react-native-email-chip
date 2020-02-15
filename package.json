@@ -7,14 +7,35 @@
     "lint": "tslint --project tsconfig.json",
     "test": "jest --notify --detectOpenHandles --color --runInBand --forceExit"
   },
+  "author": {
+    "name": "Carsten Daurehøj",
+    "email": "arelstone@gmail.com",
+    "url": "https://github.com/arelstone"
+  },
+  "homepage": "https://github.com/arelstone/react-native-email-chip#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arelstone/react-native-email-chip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arelstone/react-native-email-chip/issues"
+  },
   "keywords": [
+    "suggestions",
     "react native",
+    "react native component",
+    "component",
     "email",
-    "email chip",
-    "email input"
+    "chip",
+    "tags",
+    "tags",
+    "input",
+    "mobile",
+    "ios",
+    "android",
+    "ui"
   ],
-  "author": "Carsten Daurehøj <arelstone@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",

@@ -10,7 +10,7 @@
             "ESNext"
         ],
         "moduleResolution": "node",
-        "noEmit": true,
+        "noEmit": false,
         "strict": true,
         "target": "ESNext",
         "resolveJsonModule": true,
@@ -32,7 +32,9 @@
             "./@types"
         ],
         "declaration": true,
-        "outDir": "./lib",
+        "outDir": "./@types",
+        "checkJs": true,
+        "emitDeclarationOnly": true,
     },
     "exclude": [
         "node_modules",
