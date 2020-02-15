@@ -1,20 +1,15 @@
-name: CI
+name: pull-request
+on:
+  pull_request:
 
-on: [pull_request]
-    
 jobs:
-  setup:
-    runs-on: [ubuntu-latest]
+  pull-request:
+    runs-on: ubuntu-latest
     steps:
-        - run: npm ci
-  lint:
-    runs-on: [ubuntu-latest]
-    needs: [setup]
-    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.0.0
+      - run: npm install
       - run: npm run lint
-           
-  test:
-    runs-on: [ubuntu-latest]
-    needs: [setup]
-    steps:
-      - run: npm run test -- --ci
+      - run: npm test
