@@ -10,6 +10,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10.0.0
-      - run: npm ci
+      - run: npm clean-install
       - run: npm run lint
       - run: npm test -- --ci
