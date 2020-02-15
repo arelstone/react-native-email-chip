@@ -165,7 +165,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
         }
 
         if (value.length > 1 && isValidEmail(value) && delimiters.some((delimiter: string) => value.endsWith(delimiter))) {
-            
+
             return this.setState({
                 emails: [
                     ...emails,
