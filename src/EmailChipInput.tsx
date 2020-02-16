@@ -1,40 +1,198 @@
 import React, { createRef, ReactElement } from 'react';
 import {
     NativeSyntheticEvent, StyleProp, StyleSheet, TextInput, TextInputKeyPressEventData, TextStyle,
-    View, ViewStyle,
+    View, ViewStyle, TextInputProps,
 } from 'react-native';
 import { isValidEmail } from './utils/validator';
 import Chip from './Chip';
-import { testId } from './utils/testHelpers';
 
 const BACKSPACE = 'Backspace';
 
 interface Props {
+    /**
+     * The entries that should be displayed as chips
+     *
+     * @type {string[]}
+     * @memberof Props
+     */
     entries: string[];
+
+    /**
+     * Custom styling for the most outer container
+     *
+     * @type {StyleProp<ViewStyle>}
+     * @memberof Props
+     */
     containerStyle?: StyleProp<ViewStyle>;
+
+    /**
+     * Custom styling for the container that holds all the chips
+     *
+     * @type {StyleProp<ViewStyle>}
+     * @memberof Props
+     */
     chipContainerStyle?: StyleProp<ViewStyle>;
+
+    /**
+     * Custom styling for the text of the chip
+     *
+     * @type {StyleProp<TextStyle>}
+     * @memberof Props
+     */
     chipTextStyle?: StyleProp<TextStyle>;
+
+    /**
+     * Custom styling for the container that holds the TextInput
+     *
+     * @type {StyleProp<ViewStyle>}
+     * @memberof Props
+     */
     inputContainerStyle?: StyleProp<ViewStyle>;
+
+    /**
+     * Custom styling for the TextInput
+     *
+     * https://facebook.github.io/react-native/docs/textinput#style
+     *
+     * @type {StyleProp<TextStyle>}
+     * @memberof Props
+     */
     inputStyle?: StyleProp<TextStyle>;
+
+    /**
+     * WHen typing one of these keys the value of the TextInput will be added as ca chip
+     * Default is `,` and `;`
+     *
+     * @type {string[]}
+     * @memberof Props
+     */
     delimiters: string[];
-    keyboardAppearance: 'default' | 'light' | 'dark';
-    clearButtonMode: 'never' | 'while-editing' | 'unless-editing' | 'always';
-    placeholder?: string;
-    placeholderTextColor?: string;
-    autoCapitalize: 'none' | 'sentences' | 'words' | 'characters';
-    autoCorrect: boolean;
-    autoFocus: boolean;
-    blurOnSubmit: boolean;
+
+    /**
+     * Custom  Image/Icon for the Chip.
+     * This wil be displayed on the right side of the text
+     *
+     * @type {ReactElement}
+     * @memberof Props
+     */
     chipImage?: ReactElement;
+
+    /**
+     * This method will be called when the user taps the return button or the last character
+     * of the string is one of the listed delimiters
+     *
+     * @memberof Props
+     * @callback string[] email
+     * @returns void
+     */
     onSubmit: (emails: string[]) => void;
-    label?: ReactElement;
+
+    /**
+     * Determines the color of the keyboard.
+     *
+     * https://facebook.github.io/react-native/docs/textinput#keyboardappearance
+     *
+     * @default default
+     * @type {('default' | 'light' | 'dark')}
+     * @memberof Props
+     */
+    keyboardAppearance: 'default' | 'light' | 'dark';
+
+    /**
+     * When the clear button should appear on the right side of the text view.
+     * This property is supported only for single-line TextInput component.
+     *
+     * https://facebook.github.io/react-native/docs/textinput#clearbuttonmode
+     *
+     * @default while-editing
+     * @type {('never' | 'while-editing' | 'unless-editing' | 'always')}
+     * @memberof Props
+     */
+    clearButtonMode: 'never' | 'while-editing' | 'unless-editing' | 'always';
+
+    /**
+     * The text that should be displayed as the placeholder
+     *
+     * https://facebook.github.io/react-native/docs/textinput#placeholder
+     *
+     * @default Start by typing an email
+     * @type {string}
+     * @memberof Props
+     */
+    placeholder?: string;
+
+    /**
+     * The color of the placeholder
+     *
+     * https://facebook.github.io/react-native/docs/textinput#placeholdertextcolor
+     *
+     * @type {string}
+     * @memberof Props
+     */
+    placeholderTextColor?: string;
+
+    /**
+     * Can tell TextInput to automatically capitalize certain characters
+     *      characters: all characters,
+     *      words: first letter of each word
+     *      sentences: first letter of each sentence (default)
+     *      none: don't auto capitalize anything
+     *
+     * https://facebook.github.io/react-native/docs/textinput.html#autocapitalize
+     *
+     * @default none
+     * @type {('none' | 'sentences' | 'words' | 'characters')}
+     * @memberof Props
+     */
+    autoCapitalize: 'none' | 'sentences' | 'words' | 'characters';
+
+    /**
+     * If false, disables auto-correct
+     *
+     * https://facebook.github.io/react-native/docs/textinput#autocorrect
+     * @default true
+     * @type {boolean}
+     * @memberof Props
+     */
+    autoCorrect: boolean;
+
+    /**
+     * Should the input be focused when the component mounts
+     *
+     * https://facebook.github.io/react-native/docs/textinput#autofocus
+     *
+     * @default false
+     * @type {boolean}
+     * @memberof Props
+     */
+    autoFocus: boolean;
+
+    /**
+     * If true, the text field will blur when submitted.
+     *
+     * https://facebook.github.io/react-native/docs/textinput#bluronsubmit
+     *
+     * @default true
+     * @type {boolean}
+     * @memberof Props
+     */
+    blurOnSubmit: boolean;
+
+    /**
+     * Customize the props of the TextInput.
+     *
+     * https://facebook.github.io/react-native/docs/textinput#props
+     *
+     * @type {TextInputProps}
+     * @memberof Props
+     */
+    TextInputProps?: TextInputProps;
 }
 
 interface State {
     emails: string[];
     value: string;
 }
-
 export default class EmailChipInput extends React.Component<Props, State> {
     input = createRef<TextInput>();
 
@@ -45,7 +203,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
         placeholder: 'Start by typing an email',
         autoCapitalize: 'none',
         autoCorrect: true,
-        autoFocus: true,
+        autoFocus: false,
         blurOnSubmit: false,
     };
 
@@ -67,19 +225,13 @@ export default class EmailChipInput extends React.Component<Props, State> {
     }
 
     render() {
-        const { containerStyle, label, chipContainerStyle, chipTextStyle, chipImage, inputStyle,
+        const { containerStyle, chipContainerStyle, chipTextStyle, chipImage, inputStyle,
             inputContainerStyle, keyboardAppearance, clearButtonMode, placeholder, placeholderTextColor,
-            autoCapitalize, autoCorrect, autoFocus, blurOnSubmit,
+            autoCapitalize, autoCorrect, autoFocus, blurOnSubmit, TextInputProps,
         }: Props = this.props;
         const { emails, value }: State = this.state;
 
         return <View style={[styles.container, containerStyle]}>
-            {label && <View
-                {...testId('Label')}
-            >
-                {label}
-            </View>}
-
             {emails.map((email: string, index: number) => <Chip
                 key={index}
                 index={index}
@@ -107,6 +259,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
                     blurOnSubmit={blurOnSubmit}
                     onSubmitEditing={this.handleOnPressSubmit}
                     ref={this.input}
+                    {...TextInputProps}
                 />
             </View>
         </View>;
@@ -205,6 +358,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingHorizontal: 5,
         paddingVertical: 10,
-        minWidth: 200,
+        minWidth: 150,
     },
 });

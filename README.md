@@ -1,6 +1,8 @@
 # @arelstone/react-native-email-chip
 A simple yet customizable component to display a chip list of emails
 
+![@arelstone/react-native-email-chip](https://github.com/arelstone/react-native-email-chip/blob/master/docs/example.gif)
+
 ## Install
 ```js
 npm i @arelstone/react-native-email-chip
@@ -39,6 +41,7 @@ import EmailChipInput from '@arelstone/react-native-email-chip';
 | chipTextStyle (optional)        | TextStyle         |  |
 | inputContainerStyle (optional)  | ViewStyle         |  |
 | inputStyle (optional)           | ViewStyle         |  |
+| TextInputProps (optional)       | TextInputProps    |  |
 
 
 ## Contributing

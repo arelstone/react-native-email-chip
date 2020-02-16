@@ -1,6 +1,6 @@
 {
   "name": "@arelstone/react-native-email-chip",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "React Native component to display a list of emails as editable chips",
   "main": "index.js",
   "scripts": {
@@ -80,6 +80,9 @@
     ],
     "setupFiles": [
       "./jest.setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/example/"
     ]
   }
 }
