@@ -1,1 +1,3 @@
-export { default as EmailChipInput } from './src/EmailChipInput';
+import EmailChipInput from './src/EmailChipInput'
+
+export default EmailChipInput;

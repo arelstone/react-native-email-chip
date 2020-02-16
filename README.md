@@ -39,6 +39,7 @@ import EmailChipInput from '@arelstone/react-native-email-chip';
 | chipTextStyle (optional)        | TextStyle         |  |
 | inputContainerStyle (optional)  | ViewStyle         |  |
 | inputStyle (optional)           | ViewStyle         |  |
+| TextInputProps (optional)       | TextInputProps    |  |
 
 
 ## Contributing

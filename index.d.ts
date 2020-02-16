@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { NativeSyntheticEvent, StyleProp, TextInput, TextInputKeyPressEventData, TextStyle, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, TextInput, TextInputKeyPressEventData, TextStyle, ViewStyle, TextInputProps } from 'react-native';
 interface Props {
     entries: string[];
     containerStyle?: StyleProp<ViewStyle>;
@@ -18,7 +18,7 @@ interface Props {
     blurOnSubmit: boolean;
     chipImage?: ReactElement;
     onSubmit: (emails: string[]) => void;
-    label?: ReactElement;
+    TextInputProps?: TextInputProps;
 }
 interface State {
     emails: string[];
@@ -47,4 +47,4 @@ export default class EmailChipInput extends React.Component<Props, State> {
     lastEmail: () => string;
     focus: () => void;
 }
-export {};
+export { };

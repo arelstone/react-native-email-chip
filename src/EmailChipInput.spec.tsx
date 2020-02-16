@@ -1,9 +1,8 @@
 import React from 'react';
 import { ShallowWrapper, shallow } from 'enzyme';
+import { TextInput } from 'react-native';
 import EmailChipInput from './EmailChipInput';
 import Chip from './Chip';
-import { TextInput, Text, View } from 'react-native';
-import { findElementByTestId } from './utils/testHelpers';
 
 let wrapper: ShallowWrapper;
 let instance: any;
@@ -12,7 +11,6 @@ const mockOnSubmit = jest.fn();
 describe('<EmailChipInput />', () => {
     beforeAll(() => {
         wrapper = shallow(<EmailChipInput
-            label={<Text>Enter a lot of emails....</Text>}
             entries={['john@doe.com']}
             onSubmit={mockOnSubmit}
         />);
@@ -32,12 +30,6 @@ describe('<EmailChipInput />', () => {
 
     it('should display a TextInput', () => {
         expect(wrapper.find(TextInput).exists()).toBeTruthy();
-    });
-
-    it('should display a Label', () => {
-        expect(findElementByTestId(View, 'Label', wrapper)
-            .at(0).find(Text).prop('children'))
-            .toEqual('Enter a lot of emails....');
     });
 
     describe('tapping a Chip', () => {
