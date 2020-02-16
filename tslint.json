@@ -1,70 +1,75 @@
 {
-    "extends": [
-      "tslint:recommended",
-      "tslint-eslint-rules",
-      "tslint-react"
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules",
+    "tslint-react"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "example"
+    ]
+  },
+  "rules": {
+    "eofline": true,
+    "indent": [
+      true,
+      "spaces",
+      4
     ],
-    "rules": {
-      "eofline": true,
-      "indent": [
-        true,
-        "spaces",
-        4
-      ],
-      "semicolon": [
-        true,
-        "always"
-      ],
-      "trailing-comma": [
-        true,
-        {
-          "multiline": "always",
-          "singleline": "never"
-        }
-      ],
-      "jsx-no-lambda": false,
-      "quotemark": [
-        true,
-        "single",
-        "jsx-double"
-      ],
-      "no-console": [
-        false,
-        "log",
-        "error",
-        "warn"
-      ],
-      "object-literal-sort-keys": false,
-      "grouped-imports": false,
-      "no-empty-interface": false,
-      "ordered-imports": false,
-      "no-shadowed-variable": false,
-      "interface-name": [
-        true,
-        "never-prefix"
-      ],
-      "no-empty": false,
-      "member-access": false,
-      "jsx-no-string-ref": false,
-      "jsx-boolean-value": false,
-      "no-unused-expression": false,
-      "member-ordering": false,
-      "no-unused-variable": [
-        true,
-        {
-          "ignore-pattern": "^_"
-        }
-      ],
-      "triple-equals": true,
-      "prefer-template": true,
-      "max-line-length": [
-        true,
-        {
-          "limit": 130,
-          "ignore-pattern": "data:image\/([a-zA-Z]*);base64,([^\"]*)"
-        }
-      ],
-      "jsx-wrap-multiline": false,
-      "jsx-no-multiline-js": false
-    }
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "jsx-no-lambda": false,
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "no-console": [
+      false,
+      "log",
+      "error",
+      "warn"
+    ],
+    "object-literal-sort-keys": false,
+    "grouped-imports": false,
+    "no-empty-interface": false,
+    "ordered-imports": false,
+    "no-shadowed-variable": false,
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "no-empty": false,
+    "member-access": false,
+    "jsx-no-string-ref": false,
+    "jsx-boolean-value": false,
+    "no-unused-expression": false,
+    "member-ordering": false,
+    "no-unused-variable": [
+      true,
+      {
+        "ignore-pattern": "^_"
+      }
+    ],
+    "triple-equals": true,
+    "prefer-template": true,
+    "max-line-length": [
+      true,
+      {
+        "limit": 130,
+        "ignore-pattern": "data:image\/([a-zA-Z]*);base64,([^\"]*)"
+      }
+    ],
+    "jsx-wrap-multiline": false,
+    "jsx-no-multiline-js": false
   }
+}

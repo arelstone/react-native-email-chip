@@ -80,6 +80,9 @@
     ],
     "setupFiles": [
       "./jest.setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/example/"
     ]
   }
 }
