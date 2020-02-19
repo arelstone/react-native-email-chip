@@ -1,7 +1,7 @@
 import React, { createRef, ReactElement } from 'react';
 import {
     NativeSyntheticEvent, StyleProp, StyleSheet, TextInput, TextInputKeyPressEventData, TextStyle,
-    View, ViewStyle, TextInputProps,
+    View, ViewStyle, TextInputProps, KeyboardTypeOptions,
 } from 'react-native';
 import { isValidEmail } from './utils/validator';
 import Chip from './Chip';
@@ -187,6 +187,17 @@ interface Props {
      * @memberof Props
      */
     TextInputProps?: TextInputProps;
+
+
+    /**
+     * The type of keyboard that should be used
+     *
+     * https://facebook.github.io/react-native/docs/textinput#keyboardtype
+     *
+     * @type {KeyboardTypeOptions}
+     * @memberof Props
+     */
+    keyboardType?: KeyboardTypeOptions;
 }
 
 interface State {
@@ -205,6 +216,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
         autoCorrect: true,
         autoFocus: false,
         blurOnSubmit: false,
+        keyboardType: 'email-address',
     };
 
     state: State = {
@@ -227,7 +239,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
     render() {
         const { containerStyle, chipContainerStyle, chipTextStyle, chipImage, inputStyle,
             inputContainerStyle, keyboardAppearance, clearButtonMode, placeholder, placeholderTextColor,
-            autoCapitalize, autoCorrect, autoFocus, blurOnSubmit, TextInputProps,
+            autoCapitalize, autoCorrect, autoFocus, blurOnSubmit, TextInputProps, keyboardType,
         }: Props = this.props;
         const { emails, value }: State = this.state;
 
@@ -248,7 +260,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
                     value={value}
                     onChangeText={this.handleOnTextChange}
                     clearButtonMode={clearButtonMode}
-                    keyboardType="email-address"
+                    keyboardType={keyboardType}
                     autoFocus={autoFocus}
                     autoCapitalize={autoCapitalize}
                     autoCorrect={autoCorrect}
@@ -259,6 +271,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
                     blurOnSubmit={blurOnSubmit}
                     onSubmitEditing={this.handleOnPressSubmit}
                     ref={this.input}
+                    onBlur={this.handleOnPressSubmit}
                     {...TextInputProps}
                 />
             </View>
