@@ -1,3 +1,8 @@
+![npm](https://shields.cdn.bka.li/npm/dt/@arelstone/react-native-email-chip?style=for-the-badge)
+![npm (scoped)](https://shields.cdn.bka.li/npm/v/@arelstone/react-native-email-chip?label=version&style=for-the-badge)
+![GitHub issues](https://shields.cdn.bka.li/github/issues/arelstone/react-native-email-chip?style=for-the-badge)
+![GitHub pull requests](https://shields.cdn.bka.li/github/issues-pr/arelstone/react-native-email-chip?style=for-the-badge)
+
 # @arelstone/react-native-email-chip
 A simple yet customizable component to display a chip list of emails
 
