@@ -1,3 +1,2 @@
-import EmailChipInput from './src/EmailChipInput'
-
-export default EmailChipInput;
+export { default as EmailChipInput } from './src/EmailChipInput';
+export { DELIMITERS } from './src/EmailChipInput';

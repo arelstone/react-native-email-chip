@@ -188,7 +188,6 @@ interface Props {
      */
     TextInputProps?: TextInputProps;
 
-
     /**
      * The type of keyboard that should be used
      *
@@ -204,11 +203,14 @@ interface State {
     emails: string[];
     value: string;
 }
+
+export const DELIMITERS = [',', ';', ' '];
+
 export default class EmailChipInput extends React.Component<Props, State> {
     input = createRef<TextInput>();
 
     static defaultProps = {
-        delimiters: [',', ';'],
+        delimiters: DELIMITERS,
         keyboardAppearance: 'default',
         clearButtonMode: 'while-editing',
         placeholder: 'Start by typing an email',
