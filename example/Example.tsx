@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Image } from 'react-native';
-import EmailChipInput from '@arelstone/react-native-email-chip';
-
-declare var global: { HermesInternal: null | {} };
+import EmailChipInput from '../src/EmailChipInput';
 
 const App = () => {
   const [selected, setSelected] = useState<string[]>([
@@ -40,6 +38,7 @@ const App = () => {
 };
 
 export default App;
+
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 20,
