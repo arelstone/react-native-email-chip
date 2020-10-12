@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "tslint --project tsconfig.json",
-    "test": "jest --notify --detectOpenHandles --color --runInBand --forceExit",
-    "postinstall": "husky install"
+    "test": "jest --notify --detectOpenHandles --color --runInBand --forceExit"
   },
   "author": {
     "name": "Carsten Daurehøj",
