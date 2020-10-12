@@ -1,16 +1,18 @@
+# @arelstone/react-native-email-chip
+A simple yet very customizable component to display a chip list of emails
+
 ![npm](https://shields.cdn.bka.li/npm/dt/@arelstone/react-native-email-chip?style=for-the-badge)
 ![npm (scoped)](https://shields.cdn.bka.li/npm/v/@arelstone/react-native-email-chip?label=version&style=for-the-badge)
 ![GitHub issues](https://shields.cdn.bka.li/github/issues/arelstone/react-native-email-chip?style=for-the-badge)
 ![GitHub pull requests](https://shields.cdn.bka.li/github/issues-pr/arelstone/react-native-email-chip?style=for-the-badge)
 
-# @arelstone/react-native-email-chip
-A simple yet customizable component to display a chip list of emails
-
 ![@arelstone/react-native-email-chip](https://github.com/arelstone/react-native-email-chip/blob/master/docs/example.gif?raw=true)
 
 ## Install
 ```js
-npm i @arelstone/react-native-email-chip
+npm install @arelstone/react-native-email-chip
+// or
+yarn add @arelstone/react-native-email-chip
 ```
 
 ## Usage
@@ -25,29 +27,29 @@ import EmailChipInput from '@arelstone/react-native-email-chip';
 
 ## Props
 
-| Name                            | Type              | Default           |
-| ------------------------------- | ----------------- | ----------------- |
-| entries                         | string[]          | [] |
-| onSubmit                        | string[] => void  |  |
-| label (optional)                | ReactElement      |  |
-| delimiters (optional)           | string[]          |  [',', ';'] |
-| keyboardAppearance (optional)   | default, light, dark |  default |
-| keyboardAppearance (optional)   | never, while-editing, unless-editing, always |  while-editing |
-| placeholder (optional)          | string            | Start by typing an email |
-| autoCapitalize (optional)       | none, sentences, words, characters           | none |
-| autoCorrect (optional)          | boolean           | true |
-| autoCorrect (optional)          | boolean           | true |
-| autoFocus (optional)            | boolean           | true |
-| blurOnSubmit (optional)         | boolean           | false |
-| chipImage (optional)            | ReactElement      |  |
-| placeholderTextColor (optional) | ViewStyle         |  |
-| containerStyle (optional)       | ViewStyle         |  |
-| chipContainerStyle (optional)   | ViewStyle         |  |
-| chipTextStyle (optional)        | TextStyle         |  |
-| inputContainerStyle (optional)  | ViewStyle         |  |
-| inputStyle (optional)           | ViewStyle         |  |
-| TextInputProps (optional)       | TextInputProps    |  |
-| keyboardType (optional)         | KeyboardTypeOptions    | email-address  |
+| Name                            | Type                                            | Default                   |
+| ------------------------------- | ----------------------------------------------- | ------------------------- |
+| entries                         | string[]                                        | []                        |
+| onSubmit                        | string[] => void                                |                           |
+| label (optional)                | ReactElement                                    |                           |
+| delimiters (optional)           | string[]                                        |  [',', ';', ' ']          |
+| keyboardAppearance (optional)   | default, light, dark                            |  default                  |
+| keyboardAppearance (optional)   | never, while-editing, unless-editing, always    |  while-editing            |
+| placeholder (optional)          | string                                          | Start by typing an email  |
+| autoCapitalize (optional)       | none, sentences, words, characters              | none                      |
+| autoCorrect (optional)          | boolean                                         | true                      |
+| autoCorrect (optional)          | boolean                                         | true                      |
+| autoFocus (optional)            | boolean                                         | true                      |
+| blurOnSubmit (optional)         | boolean                                         | false                     |
+| chipImage (optional)            | ReactElement                                    |                           |
+| placeholderTextColor (optional) | ViewStyle                                       |                           |
+| containerStyle (optional)       | ViewStyle                                       |                           |
+| chipContainerStyle (optional)   | ViewStyle                                       |                           |
+| chipTextStyle (optional)        | TextStyle                                       |                           |
+| inputContainerStyle (optional)  | ViewStyle                                       |                           |
+| inputStyle (optional)           | ViewStyle                                       |                           |
+| TextInputProps (optional)       | TextInputProps                                  |                           |
+| keyboardType (optional)         | KeyboardTypeOptions                             | email-address             |
 
 
 ## Contributing

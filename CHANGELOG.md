@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 2.1.2
+- An issue has been fixed that occured when you tapped the backspace-key if the input field fas empty
+
 ## Version 2.1.0
 
 ### Delimiters
