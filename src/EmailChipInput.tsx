@@ -284,7 +284,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
         const { value }: State = this.state;
         const { blurOnSubmit }: Props = this.props;
 
-        if (key === BACKSPACE && value.length < 1) {
+        if (value && key === BACKSPACE && value !== undefined && value.length < 1) {
             const { emails }: State = this.state;
 
             return this.setState({
