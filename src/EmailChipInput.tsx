@@ -308,8 +308,9 @@ export default class EmailChipInput extends React.Component<Props, State> {
             this.setState({
                 emails: [...emails, value],
                 value: '',
-            }, () => onSubmit(this.state.emails));
+            });
         }
+        onSubmit(this.state.emails)
     }
 
     handleOnPressChip = (index: number): void => {
