@@ -310,7 +310,7 @@ export default class EmailChipInput extends React.Component<Props, State> {
                 value: '',
             }, () => onSubmit(this.state.emails));
         } else {
-            onSubmit(this.state.emails)
+            onSubmit(this.state.emails);
         }
     }
 
