@@ -6,8 +6,6 @@ jobs:
   pull-request:
     runs-on: ubuntu-latest
     steps:
-      - name: install jq
-        run: apt-get install jq
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - name: Extract version from package.json
@@ -15,11 +13,13 @@ jobs:
         uses: Saionaro/extract-package-version@v1.1.1
       - name: Print version version in package.json
         run: echo ${{ steps.extract_version.outputs.version }}
+        
       - name: Latest published version
+        uses: sergeysova/jq-action@v2
         id: current-version
-        run: |
-          ::set-output version::$(npm view @arelstone/react-native-email-chip --json | jq '.version')
+        with:
+          cmd: npm view @arelstone/react-native-email-chip --json | jq '.version'
       - name: Print latest published version
         run: echo ${{ steps.package-version.outputs.current-version }}
       - name: Should this be published
-        run: echo ${{ steps.extract_version.outputs.version == steps.current-version.outputs.version }}
+        run: echo ${{ steps.extract_version.outputs.version == steps.current-version.outputs.value }}
