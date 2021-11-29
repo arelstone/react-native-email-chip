@@ -16,7 +16,7 @@ jobs:
       - name: Check package version
         id: cpv
         uses: PostHog/check-package-version@v2
-      - name: Echo output
+      # - name: Echo output
         # run: |
         #   echo "Committed version: ${{ steps.cpv.outputs.committed-version }}"
         #   echo "Published version: ${{ steps.cpv.outputs.published-version }}"
