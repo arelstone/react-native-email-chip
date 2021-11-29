@@ -15,11 +15,17 @@ jobs:
         run: npm run lint
       - name: Run tests
         run: npm test -- --ci
-      - name: Tag release
-        uses: anothrNick/github-tag-action@1.17.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.token }}
-          WITH_V: false
+      - name: Extract version from package.json
+        id: extract_version
+        uses: Saionaro/extract-package-version@v1.0.6
+      - name: Print version
+        run: echo ${{ steps.extract_version.outputs.version }}
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: ${{ secrets.token }}
+          prerelease: false
+          title: v${{ steps.extract_version.outputs.version }}
+          automatic_release_tag: v${{ steps.extract_version.outputs.version }}
       - name: Publish package
         run: npm publish
         env:
