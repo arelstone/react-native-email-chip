@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Switch from tslint to eslint
 - Move jest config from package.json to seperate file
 
 ## Version 2.2.0
