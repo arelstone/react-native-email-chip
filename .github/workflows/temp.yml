@@ -24,5 +24,5 @@ jobs:
       # - name: Print latest published version
       #   run: echo ${{ steps.package-version.outputs.current-version }}
       - name: Should this be published
-        if: ${{steps.cpv.outputs.is-new-version}}
+        if: ${{steps.cpv.outputs.is-new-version == 'true' }}
         run: echo "Publish this!!!"
