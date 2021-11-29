@@ -22,7 +22,13 @@ jobs:
         uses: Saionaro/extract-package-version@v1.0.6
       - name: Print version
         run: echo ${{ steps.extract_version.outputs.version }}
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: github.repository
       - uses: marvinpinto/action-automatic-releases@latest
+        if: ${{ steps.extract_version.outputs.version != steps.package-version.outputs.current-version }}
         with:
           repo_token: ${{ github.token }}
           prerelease: false
@@ -30,5 +36,6 @@ jobs:
           automatic_release_tag: v${{ steps.extract_version.outputs.version }}
       - name: Publish package
         run: npm publish
+        if: ${{ steps.extract_version.outputs.version != steps.package-version.outputs.current-version }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
