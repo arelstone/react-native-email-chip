@@ -20,9 +20,9 @@ jobs:
         uses: Saionaro/extract-package-version@v1.0.6
       - name: Print version
         run: echo ${{ steps.extract_version.outputs.version }}
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: marvinpinto/action-automatic-releases@latest
         with:
-          repo_token: ${{ secrets.token }}
+          repo_token: ${{ github.token }}
           prerelease: false
           title: v${{ steps.extract_version.outputs.version }}
           automatic_release_tag: v${{ steps.extract_version.outputs.version }}
