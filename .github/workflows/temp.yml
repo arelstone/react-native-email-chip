@@ -19,4 +19,4 @@ jobs:
       - name: Print latest published version
         run: echo ${{ steps.package-version.outputs.current-version }}
       - name: Should this be published
-        run: echo ${{ steps.extract_version.outputs.version > steps.package-version.outputs.current-version }}
+        run: echo ${{ steps.extract_version.outputs.version != steps.package-version.outputs.current-version }}
