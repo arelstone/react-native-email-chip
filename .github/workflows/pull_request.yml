@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - run: npm clean-install
-      - run: npm run lint
-      - run: npm test -- --ci
+      - uses: actions/setup-node@v2
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - name: Run linting
+        run: npm run lint
+      - name: Run tests
+        run: npm test -- --ci
