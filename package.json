@@ -4,7 +4,7 @@
   "description": "React Native component to display a list of emails as editable chips",
   "main": "index.js",
   "scripts": {
-    "lint": "tslint --project tsconfig.json",
+    "lint": "eslint .",
     "test": "jest --notify --detectOpenHandles --color --runInBand --forceExit"
   },
   "author": {
@@ -38,6 +38,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@arelstone/eslint-config-react-native-typescript": "^1.0.3",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.8",
@@ -52,9 +53,6 @@
     "react-dom": "^16.12.0",
     "react-native": "^0.61.5",
     "ts-jest": "^25.2.1",
-    "tslint": "^6.0.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^4.2.0",
     "typescript": "^3.8.2"
   },
   "jest": {

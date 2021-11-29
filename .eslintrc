@@ -1,0 +1,3 @@
+{
+    "extends": "@arelstone/eslint-config-react-native-typescript",
+}
