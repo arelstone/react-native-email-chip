@@ -8,6 +8,7 @@ let wrapper: ShallowWrapper;
 let instance: any;
 
 const mockOnSubmit = jest.fn();
+
 describe('<EmailChipInput />', () => {
     beforeAll(() => {
         wrapper = shallow(<EmailChipInput
@@ -34,8 +35,7 @@ describe('<EmailChipInput />', () => {
 
     describe('tapping a Chip', () => {
         beforeAll(() => {
-            // @ts-ignore
-            wrapper.find(Chip).prop('onPress')(0);
+            wrapper.find(Chip).prop<any>('onPress')(0);
         });
 
         it('should set the value of the Chip that is tapped as the value of the TextInput', () => {

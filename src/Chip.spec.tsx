@@ -37,8 +37,7 @@ describe('<Chip />', () => {
     });
 
     it('should invoke onPress when tapping the Chip', () => {
-        // @ts-ignore
-        wrapper.find(TouchableOpacity).prop('onPress')();
+        wrapper.find(TouchableOpacity).prop<any>('onPress')();
 
         expect(mockOnPress).toHaveBeenCalledWith(0);
     });

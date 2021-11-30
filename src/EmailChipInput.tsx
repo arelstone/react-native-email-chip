@@ -228,11 +228,13 @@ export default class EmailChipInput extends React.Component<Props, State> {
 
     componentDidMount() {
         const { entries }: Props = this.props;
+
         this.setState({ emails: entries });
     }
 
     componentDidUpdate(prevProps: Props) {
         const { entries }: Props = this.props;
+
         if (prevProps.entries.length !== entries.length) {
             this.setState({ emails: entries });
         }

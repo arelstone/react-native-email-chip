@@ -26,7 +26,7 @@ const Chip: React.FC<Props> = ({ chipContainerStyle, index, onPress, chipImage, 
 
         {chipImage && <View
             style={styles.chipImageContainer}
-            {...testId(`ChipImage`)}
+            {...testId('ChipImage')}
         >
             {chipImage}
         </View>}
