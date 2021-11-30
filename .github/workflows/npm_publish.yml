@@ -21,12 +21,12 @@ jobs:
         id: cpv
         uses: PostHog/check-package-version@v2
       - uses: marvinpinto/action-automatic-releases@latest
-        if: ${{steps.cpv.outputs.is-new-version == 'true' }}
+        if: ${{ steps.cpv.outputs.is-new-version == 'true' }}
         with:
           repo_token: ${{ github.token }}
           prerelease: false
           title: v${{ steps.extract_version.outputs.version }}
-          automatic_release_tag: v${{ steps.extract_version.outputs.version }}
+          automatic_release_tag: v${{ steps.cpv.outputs.committed-version }}
       - name: Publish package
         run: npm publish
         if: ${{steps.cpv.outputs.is-new-version == 'true' }}
