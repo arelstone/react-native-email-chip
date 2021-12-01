@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: paralenz/actions/setup-node@1.1.3
+        with:
+            registry-url: http://registry.npmjs.org
       # - name: test paralenz/make-release
       #   uses: paralenz/actions/make-release@master
       - name: Check package version
