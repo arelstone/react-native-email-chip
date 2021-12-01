@@ -8,6 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
+      - name: Check package version
+        uses: PostHog/check-package-version@v2
+        id: cpv
+        
       - name: Skip publish
         if: ${{steps.cpv.outputs.is-new-version == 'false' }}
         run: |
