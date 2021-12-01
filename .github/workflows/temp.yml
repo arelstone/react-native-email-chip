@@ -14,3 +14,5 @@ jobs:
       - name: Should this be published
         if: ${{steps.cpv.outputs.is-new-version == 'true' }}
         run: echo "Publish this!!!"
+      - name: test paralenz/make-release
+        uses: paralenz/actions/make-release@master
