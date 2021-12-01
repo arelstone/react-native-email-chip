@@ -7,14 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: paralenz/actions/setup-node@v1.1.3
+      - uses: actions/setup-node@v2
+      - name: Skip publish
+        if: ${{steps.cpv.outputs.is-new-version == 'false' }}
+        run: |
+          echo "::error Release will not be published. The version number has not been bumped"
+          echo "Committed version: ${{ steps.cpv.outputs.committed-version }}"
+          echo "Published version: ${{ steps.cpv.outputs.published-version }}"
+          echo "Is new version: ${{ steps.cpv.outputs.is-new-version }}"
+        shell: bash
+
+      - name: Make release
+        if: ${{steps.cpv.outputs.is-new-version == 'true' }}
+        uses: marvinpinto/action-automatic-releases@latest
         with:
-            registry-url: http://registry.npmjs.org
-      - name: test paralenz/make-release
-        uses: paralenz/actions/make-release@1.1.3
-      # - name: Check package version
-      #   id: cpv
-      #   uses: PostHog/check-package-version@v2
-      # - name: Should this be published
-      #   if: ${{steps.cpv.outputs.is-new-version == 'true' }}
-      #   run: echo "Publish this!!!"
+          repo_token: ${{ inputs.token }}
+          prerelease: false
+          title: v${{ steps.cpv.outputs.committed-version }}
+          automatic_release_tag: v${{ steps.cpv.outputs.committed-version }}
