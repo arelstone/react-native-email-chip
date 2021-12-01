@@ -11,7 +11,7 @@ jobs:
       - name: Check package version
         uses: PostHog/check-package-version@v2
         id: cpv
-        
+
       - name: Skip publish
         if: ${{steps.cpv.outputs.is-new-version == 'false' }}
         run: |
@@ -25,7 +25,7 @@ jobs:
         if: ${{steps.cpv.outputs.is-new-version == 'true' }}
         uses: marvinpinto/action-automatic-releases@latest
         with:
-          repo_token: ${{ inputs.token }}
+          repo_token: ${{ github.token }}
           prerelease: false
           title: v${{ steps.cpv.outputs.committed-version }}
           automatic_release_tag: v${{ steps.cpv.outputs.committed-version }}
