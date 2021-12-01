@@ -9,8 +9,24 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - name: Check package version
-        id: cpv
         uses: PostHog/check-package-version@v2
-      - name: Should this be published
+        id: cpv
+
+      - name: Skip publish
+        if: ${{steps.cpv.outputs.is-new-version == 'false' }}
+        run: |
+          echo "::error Release will not be published. The version number has not been bumped"
+          echo "Committed version: ${{ steps.cpv.outputs.committed-version }}"
+          echo "Published version: ${{ steps.cpv.outputs.published-version }}"
+          echo "Is new version: ${{ steps.cpv.outputs.is-new-version }}"
+        shell: bash
+
+      - name: Make release
         if: ${{steps.cpv.outputs.is-new-version == 'true' }}
-        run: echo "Publish this!!!"
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GH_TOKEN }}
+          prerelease: false
+          draft: true
+          title: v${{ steps.cpv.outputs.committed-version }}
+          automatic_release_tag: v${{ steps.cpv.outputs.committed-version }}

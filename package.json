@@ -1,6 +1,6 @@
 {
   "name": "@arelstone/react-native-email-chip",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "React Native component to display a list of emails as editable chips",
   "main": "index.js",
   "scripts": {
