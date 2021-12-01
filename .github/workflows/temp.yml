@@ -8,11 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - name: test paralenz/make-release
-        uses: paralenz/actions/make-release@master
-      # - name: Check package version
-      #   id: cpv
-      #   uses: PostHog/check-package-version@v2
-      # - name: Should this be published
-      #   if: ${{steps.cpv.outputs.is-new-version == 'true' }}
-      #   run: echo "Publish this!!!"
+      # - name: test paralenz/make-release
+      #   uses: paralenz/actions/make-release@master
+      - name: Check package version
+        id: cpv
+        uses: PostHog/check-package-version@v2
+      - name: Should this be published
+        if: ${{steps.cpv.outputs.is-new-version == 'true' }}
+        run: echo "Publish this!!!"
