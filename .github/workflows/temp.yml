@@ -25,7 +25,7 @@ jobs:
         if: ${{steps.cpv.outputs.is-new-version == 'true' }}
         uses: marvinpinto/action-automatic-releases@latest
         with:
-          repo_token: ${{ github.token }}
+          repo_token: ${{ secrets.GH_TOKEN }}
           prerelease: false
           title: v${{ steps.cpv.outputs.committed-version }}
           automatic_release_tag: v${{ steps.cpv.outputs.committed-version }}
