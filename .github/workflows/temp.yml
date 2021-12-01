@@ -27,5 +27,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GH_TOKEN }}
           prerelease: false
+          draft: true
           title: v${{ steps.cpv.outputs.committed-version }}
           automatic_release_tag: v${{ steps.cpv.outputs.committed-version }}
