@@ -54,7 +54,7 @@ export const EmailChipInput: FC<Props> = ({
 
     const lastEntry = useCallback(() => emails[emails.length - 1], [emails]);
 
-    const handleOnTextChange = useCallback((value: string) => {
+    const onTextChange = useCallback((value: string) => {
         if (value === lastEntry()) {
             return setValue('');
         }
@@ -69,7 +69,7 @@ export const EmailChipInput: FC<Props> = ({
         }
     }, [emails, isValidEmail]);
 
-    const handleOnKeyPress = useCallback(({ nativeEvent: { key } }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
+    const onKeyPress = useCallback(({ nativeEvent: { key } }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
         if (!!value && key === BACKSPACE) {
             setValue(lastEntry());
             setEmails(emails.filter((value) => value !== lastEntry()));
@@ -80,7 +80,7 @@ export const EmailChipInput: FC<Props> = ({
         }
     }, [emails, lastEntry, BACKSPACE]);
 
-    const handleOnPressSubmit = useCallback(() => {
+    const onBlur = useCallback(() => {
         if (!isValidEmail(value)) {
             return onSubmit(emails);
         }
@@ -94,10 +94,10 @@ export const EmailChipInput: FC<Props> = ({
 
     return <View style={[styles.container, containerStyle]}>
         {emails.map((email, index) => <Chip
-            key={index}
             index={index}
-            onPress={(index: number) => handleOnPressChip(index)}
             value={email}
+            onPress={handleOnPressChip}
+            key={index}
             chipContainerStyle={chipContainerStyle}
             chipImage={chipImage}
             chipTextStyle={chipTextStyle}
@@ -105,22 +105,22 @@ export const EmailChipInput: FC<Props> = ({
 
         <View style={[styles.inputContainer, inputContainerStyle]}>
             <TextInput
-                style={[styles.input, inputStyle]}
                 value={value}
-                onChangeText={handleOnTextChange}
-                clearButtonMode={clearButtonMode}
-                keyboardType={keyboardType}
-                autoFocus={autoFocus}
-                autoCapitalize={autoCapitalize}
-                autoCorrect={autoCorrect}
-                keyboardAppearance={keyboardAppearance}
-                onKeyPress={handleOnKeyPress}
-                placeholder={placeholder}
-                placeholderTextColor={placeholderTextColor}
-                blurOnSubmit={blurOnSubmit}
-                onSubmitEditing={handleOnPressSubmit}
                 ref={ref}
-                onBlur={handleOnPressSubmit}
+                onChangeText={onTextChange}
+                onKeyPress={onKeyPress}
+                onSubmitEditing={onBlur}
+                onBlur={onBlur}
+                blurOnSubmit={blurOnSubmit}
+                keyboardType={keyboardType}
+                clearButtonMode={clearButtonMode}
+                autoCorrect={autoCorrect}
+                autoFocus={autoFocus}
+                placeholder={placeholder}
+                autoCapitalize={autoCapitalize}
+                keyboardAppearance={keyboardAppearance}
+                placeholderTextColor={placeholderTextColor}
+                style={[styles.input, inputStyle]}
                 {...TextInputProps}
             />
         </View>
