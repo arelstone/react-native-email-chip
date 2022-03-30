@@ -15,8 +15,6 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Run linting
         run: npm run lint
-      - name: Run tests
-        run: npm test -- --ci
       - name: Check package version
         id: cpv
         uses: PostHog/check-package-version@v2
