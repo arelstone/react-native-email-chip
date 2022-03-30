@@ -1,7 +1,8 @@
 import React, { FC, ReactElement, useCallback, useRef, useState } from 'react';
-import { View, StyleSheet, StyleProp, ViewStyle, TextStyle, TextInputProps, KeyboardTypeOptions, TextInput, NativeSyntheticEvent, TextInputKeyPressEventData } from 'react-native';
+import { View, StyleProp, ViewStyle, TextStyle, TextInputProps, KeyboardTypeOptions, TextInput, NativeSyntheticEvent, TextInputKeyPressEventData, ColorValue } from 'react-native';
 import { Chip } from './components/Chip';
 import { BACKSPACE, DELIMITERS } from './constants';
+import { styles } from './styles';
 import { isValidEmail } from './utils/validator';
 
 interface Props {
@@ -17,17 +18,19 @@ interface Props {
     keyboardAppearance?: TextInputProps['keyboardAppearance'];
     clearButtonMode?: TextInputProps['clearButtonMode'];
     placeholder?: string;
-    placeholderTextColor?: string;
+    placeholderTextColor?: ColorValue;
     autoCapitalize?: TextInputProps['autoCapitalize'];
     autoCorrect?: boolean;
     autoFocus?: boolean;
     blurOnSubmit?: boolean;
-    TextInputProps?: TextInputProps;
     keyboardType?: KeyboardTypeOptions;
+    TextInputProps?: TextInputProps;
 }
 
-
 export const EmailChipInput: FC<Props> = ({
+    entries, onSubmit,
+    chipImage, autoCorrect, TextInputProps,
+    containerStyle, chipContainerStyle, inputContainerStyle, inputStyle, placeholderTextColor, chipTextStyle,
     delimiters = DELIMITERS,
     keyboardAppearance = 'default',
     clearButtonMode = 'while-editing',
@@ -36,11 +39,9 @@ export const EmailChipInput: FC<Props> = ({
     autoFocus = false,
     blurOnSubmit = true,
     keyboardType = 'email-address',
-    containerStyle, chipContainerStyle, chipImage, chipTextStyle, autoCorrect, entries, onSubmit, TextInputProps,
-    inputContainerStyle, inputStyle, placeholderTextColor,
+
 }) => {
     const ref = useRef<TextInput>(null);
-
     const [emails, setEmails] = useState<string[]>(entries);
     const [value, setValue] = useState<string>('');
 
@@ -51,14 +52,14 @@ export const EmailChipInput: FC<Props> = ({
         return ref.current?.focus();
     }, [ref, emails]);
 
-    const getLastEntry = useCallback(() => emails[emails.length - 1], [emails]);
+    const lastEntry = useCallback(() => emails[emails.length - 1], [emails]);
 
     const handleOnTextChange = useCallback((value: string) => {
-        if (value === getLastEntry()) {
+        if (value === lastEntry()) {
             return setValue('');
         }
 
-        if (value.length > 1 && isValidEmail(value) && delimiters.some((delimiter: string) => value.endsWith(delimiter))) {
+        if (isValidEmail(value) && delimiters.some(delimiter => value.endsWith(delimiter))) {
             setEmails([
                 ...emails,
                 value.substring(0, value.length - 1),
@@ -69,31 +70,30 @@ export const EmailChipInput: FC<Props> = ({
     }, [emails, isValidEmail]);
 
     const handleOnKeyPress = useCallback(({ nativeEvent: { key } }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
-        if (value && key === BACKSPACE && value !== undefined && value.length < 1) {
-            setValue(getLastEntry());
-            setEmails(emails.filter((value) => value !== getLastEntry()));
+        if (!!value && key === BACKSPACE) {
+            setValue(lastEntry());
+            setEmails(emails.filter((value) => value !== lastEntry()));
         }
 
         if (blurOnSubmit) {
             return ref.current?.focus();
         }
-    }, [emails, getLastEntry, BACKSPACE]);
+    }, [emails, lastEntry, BACKSPACE]);
 
     const handleOnPressSubmit = useCallback(() => {
-        if (isValidEmail(value)) {
-            const newEntries = [...emails, value];
-
-            setEmails(newEntries);
-            setValue('');
-
-            onSubmit(newEntries);
-        } else {
-            onSubmit(emails);
+        if (!isValidEmail(value)) {
+            return onSubmit(emails);
         }
+
+        const newEntries = [...emails, value];
+
+        setEmails(newEntries);
+        setValue('');
+        onSubmit(newEntries);
     }, [emails, onSubmit]);
 
     return <View style={[styles.container, containerStyle]}>
-        {emails.map((email: string, index: number) => <Chip
+        {emails.map((email, index) => <Chip
             key={index}
             index={index}
             onPress={(index: number) => handleOnPressChip(index)}
@@ -126,23 +126,3 @@ export const EmailChipInput: FC<Props> = ({
         </View>
     </View>;
 };
-
-
-
-
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        backgroundColor: 'white',
-        paddingVertical: 10,
-    },
-    inputContainer: {},
-    input: {
-        fontSize: 16,
-        paddingHorizontal: 5,
-        paddingVertical: 10,
-        minWidth: 150,
-    },
-});
