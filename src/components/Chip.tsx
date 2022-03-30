@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { TouchableOpacity, View, StyleProp, ViewStyle, TextStyle, Text, StyleSheet } from 'react-native';
-import { testId } from './utils/testHelpers';
+import { testId } from '../utils/testHelpers';
 
 interface Props {
     index: number;
@@ -11,7 +11,7 @@ interface Props {
     chipImage?: ReactElement;
 }
 
-const Chip: React.FC<Props> = ({ chipContainerStyle, index, onPress, chipImage, chipTextStyle, value }) => {
+export const Chip: React.FC<Props> = ({ chipContainerStyle, index, onPress, chipImage, chipTextStyle, value }) => {
     return <TouchableOpacity
         style={[styles.chipContainer, chipContainerStyle]}
         onPress={() => onPress(index)}
@@ -33,8 +33,6 @@ const Chip: React.FC<Props> = ({ chipContainerStyle, index, onPress, chipImage, 
     </TouchableOpacity>;
 };
 
-
-export default Chip;
 
 
 const styles = StyleSheet.create({

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ShallowWrapper, shallow } from 'enzyme';
-import Chip from './Chip';
+import { Chip } from './Chip';
 import { Text, View, TouchableOpacity } from 'react-native';
-import { findElementByTestId } from './utils/testHelpers';
+import { findElementByTestId } from '../utils/testHelpers';
 
 let wrapper: ShallowWrapper;
 

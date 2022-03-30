@@ -1,8 +1,8 @@
 import React from 'react';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { TextInput } from 'react-native';
-import EmailChipInput from './EmailChipInput';
-import Chip from './Chip';
+import { EmailChipInput } from './EmailChipInput';
+import { Chip } from './components/Chip';
 
 let wrapper: ShallowWrapper;
 let instance: any;

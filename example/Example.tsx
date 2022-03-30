@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Image } from 'react-native';
-import EmailChipInput from '../src/EmailChipInput';
+import EmailChipInput from '../src';
 
 const App = () => {
     const [selected, setSelected] = useState<string[]>([
