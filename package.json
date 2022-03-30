@@ -43,10 +43,8 @@
     "@babel/preset-react": "^7.16.7",
     "@types/react": "*",
     "@types/react-native": "*",
-    "react-dom": "^18.0.0",
-    "typescript": "^4.6.3"
-  },
-  "peerDependencies": {
+    "react-dom": "*",
+    "typescript": "^4.6.3",
     "react": "*",
     "react-native": "*"
   }
