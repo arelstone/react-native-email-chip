@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import { TouchableOpacity, View, StyleProp, ViewStyle, TextStyle, Text, StyleSheet } from 'react-native';
-import { testId } from '../utils/testHelpers';
 
 interface Props {
     index: number;
@@ -15,10 +14,10 @@ export const Chip: React.FC<Props> = ({ chipContainerStyle, index, onPress, chip
     return <TouchableOpacity
         style={[styles.chipContainer, chipContainerStyle]}
         onPress={() => onPress(index)}
-        {...testId(`ChipContainer_${index}`)}
+        testID={`ChipContainer_${index}`}
     >
         <Text
-            {...testId('Content')}
+            testID="content"
             style={[styles.chipText, chipTextStyle]}
         >
             {value}
@@ -26,7 +25,7 @@ export const Chip: React.FC<Props> = ({ chipContainerStyle, index, onPress, chip
 
         {chipImage && <View
             style={styles.chipImageContainer}
-            {...testId('ChipImage')}
+            testID="ChipImage"
         >
             {chipImage}
         </View>}

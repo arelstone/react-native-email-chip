@@ -4,11 +4,12 @@ import { Chip } from './Chip';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { findElementByTestId } from '../utils/testHelpers';
 
-let wrapper: ShallowWrapper;
 
-const mockOnPress = jest.fn();
 
 describe('<Chip />', () => {
+    const mockOnPress = jest.fn();
+    let wrapper: ShallowWrapper;
+
     beforeAll(() => {
         wrapper = shallow(<Chip
             index={0}
