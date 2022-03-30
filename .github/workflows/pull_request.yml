@@ -1,16 +1,30 @@
 name: pull-request
 on:
   pull_request:
-
+  
 jobs:
-  pull-request:
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install dependencies
-        run: npm ci
-      - name: Run linting
-        run: npm run lint
-      - name: Run tests
-        run: npm test -- --ci
+        run: yarn install --frozen-lockfile --ignore-scripts
+      
+      - name: Linting
+        run: yarn lint
+      
+      - name: Build
+        run: yarn build

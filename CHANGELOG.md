@@ -1,10 +1,11 @@
 # Changelog
 
-## Unreleased
-- Set `react` as peer dependency
-- Set `react-native` as peer dependency
-- Remove use of husky
-
+## Version 2.3.0
+- ♻️ Convert all components from class components to functional components
+- 👷 Workflows has been updated to require gitmoji
+- ⬆️ Upgrade all dependencies to latest versions
+- ➖ Remove the use of husky
+- 🔨 Use yarn instead of npm
 
 ## Version 2.2.1
 - Switch from tslint to eslint

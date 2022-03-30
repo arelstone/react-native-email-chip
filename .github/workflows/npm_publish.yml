@@ -1,34 +1,49 @@
-name: npm-publish
+name: Push to master
 on:
   push:
     branches:
       - master
 jobs:
-  setup:
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
         with:
-          registry-url: https://registry.npmjs.org/
+          node-version: 16
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install dependencies
-        run: npm ci --ignore-scripts
-      - name: Run linting
-        run: npm run lint
-      - name: Run tests
-        run: npm test -- --ci
-      - name: Check package version
-        id: cpv
-        uses: PostHog/check-package-version@v2
-      - uses: marvinpinto/action-automatic-releases@latest
-        if: ${{ steps.cpv.outputs.is-new-version == 'true' }}
+        run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Linting
+        run: yarn lint
+      
+      - name: Build
+        run: yarn build
+      
+      - name: Publish to NPM
+        uses: JS-DevTools/npm-publish@v1
         with:
-          repo_token: ${{ github.token }}
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+      
+      - name: Extract version from package.json
+        id: extract_version
+        uses: Saionaro/extract-package-version@v1.0.6
+
+      - name: Create release on github
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: ${{ secrets.GH_TOKEN }}
           prerelease: false
           title: v${{ steps.extract_version.outputs.version }}
-          automatic_release_tag: v${{ steps.cpv.outputs.committed-version }}
-      - name: Publish package
-        run: npm publish
-        if: ${{steps.cpv.outputs.is-new-version == 'true' }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          automatic_release_tag: v${{ steps.extract_version.outputs.version }}
