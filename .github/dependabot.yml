@@ -8,17 +8,19 @@ updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: daily
+      interval: monthly
     reviewers:
       - arelstone
     labels:
       - dependencies
       - javascript
+    commit-message:
+      prefix: ⬆️
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
+      interval: monthly
     reviewers:
       - arelstone
     labels:
