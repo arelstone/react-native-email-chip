@@ -10,9 +10,9 @@
     "@jridgewell/trace-mapping" "^0.3.0"
 
 "@arelstone/eslint-config-react-native-typescript@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@arelstone/eslint-config-react-native-typescript/-/eslint-config-react-native-typescript-1.1.2.tgz#40eb9cf6eaf56b510bb9f02e613eeb1aea96f947"
-  integrity sha512-ntPTHJLJw96w9/7w7btSQleEPWgQmlX2M24VlitK7BHX2H101Lw3ka27n8NgfsmMAwxelHS0LI/uK/Hw8IZ2gw==
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@arelstone/eslint-config-react-native-typescript/-/eslint-config-react-native-typescript-1.1.5.tgz#206744196161f8f9686a27e598500d625c2188af"
+  integrity sha512-ieTTiizzi+KtyKizDf2ka50R8uuPwQRfsh/Nk5UUyvN0dD7RX2klyIfzhihWX6YSLX4Jy2E9JqwVwcVh/fTYWw==
   dependencies:
     "@react-native-community/eslint-config" "^3.0.1"
     "@typescript-eslint/eslint-plugin" "^5.17.0"
@@ -5315,12 +5315,7 @@ type-fest@^0.7.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.7.1.tgz#8dda65feaf03ed78f0a3f9678f1869147f7c5c48"
   integrity sha512-Ne2YiiGN8bmrmJJEuTWTLJR32nh/JdL1+PSicowtNb0WFpn59GK8/lfD61bVtzguz7b3PBt74nxpv/Pw5po5Rg==
 
-typescript@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
-  integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
-
-typescript@^4.7.3:
+typescript@^4.6.3, typescript@^4.7.3:
   version "4.7.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
   integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
