@@ -38,7 +38,6 @@ import EmailChipInput from '@arelstone/react-native-email-chip';
 | placeholder (optional)          | string                                          | Start by typing an email  |
 | autoCapitalize (optional)       | none, sentences, words, characters              | none                      |
 | autoCorrect (optional)          | boolean                                         | true                      |
-| autoCorrect (optional)          | boolean                                         | true                      |
 | autoFocus (optional)            | boolean                                         | true                      |
 | blurOnSubmit (optional)         | boolean                                         | false                     |
 | chipImage (optional)            | ReactElement                                    |                           |
