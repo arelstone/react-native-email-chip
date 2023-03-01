@@ -38,7 +38,7 @@ jobs:
       
       - name: Extract version from package.json
         id: extract_version
-        uses: Saionaro/extract-package-version@v1.0.6
+        uses: Saionaro/extract-package-version@v1.2.1
 
       - name: Create release on github
         uses: marvinpinto/action-automatic-releases@v1.2.1
