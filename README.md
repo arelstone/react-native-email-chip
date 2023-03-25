@@ -1,10 +1,11 @@
 # @arelstone/react-native-email-chip
 A simple yet very customizable component to display a chip list of emails
 
-![npm](https://shields.cdn.bka.li/npm/dt/@arelstone/react-native-email-chip?style=for-the-badge)
-![npm (scoped)](https://shields.cdn.bka.li/npm/v/@arelstone/react-native-email-chip?label=version&style=for-the-badge)
-![GitHub issues](https://shields.cdn.bka.li/github/issues/arelstone/react-native-email-chip?style=for-the-badge)
-![GitHub pull requests](https://shields.cdn.bka.li/github/issues-pr/arelstone/react-native-email-chip?style=for-the-badge)
+![](https://flat.badgen.net/npm/dy/@arelstone/react-native-email-chip)
+![](https://flat.badgen.net/npm/v/@arelstone/react-native-email-chip)
+![](https://flat.badgen.net/npm/types/@arelstone/react-native-email-chip)
+![](https://flat.badgen.net/github/open-issues/arelstone/react-native-email-chip)
+![](https://flat.badgen.net/github/open-prs/arelstone/react-native-email-chip)
 
 ![@arelstone/react-native-email-chip](https://github.com/arelstone/react-native-email-chip/blob/master/docs/example.png?raw=true)
 
