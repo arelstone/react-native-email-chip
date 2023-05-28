@@ -26,5 +26,7 @@ updates:
     labels:
       - dependencies
       - action
+    commit-message:
+      prefix: 👷
       
 
