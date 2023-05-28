@@ -1,0 +1,9 @@
+src
+coverage
+.github
+.vscode
+.eslintrc
+.eslintignore
+tsconfig.json
+tsconfig.*.json
+.env*
